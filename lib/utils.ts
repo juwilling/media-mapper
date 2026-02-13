@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 import { Row } from "@tanstack/react-table";
-import { MediaLocation } from "@/lib/airtable/types";
+import { MapFilters, MediaLocation } from "@/lib/airtable/types";
 import { formatLocation } from "@/components/media-locations-table/columns";
 
 const headers = [
@@ -63,4 +63,28 @@ export function exportToCSV(filteredRows: Row<MediaLocation>[]) {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+export function removeQueryParameter(param: string): string {
+  const currentURL = new URL(window.location.href).search;
+  const params = new URLSearchParams(currentURL);
+
+  params.delete(param);
+
+  return `?${params.toString()}`;
+}
+
+export function addQueryParameter(param: string, value: string | number): string {
+  const currentURL = new URL(window.location.href).search;
+  const params = new URLSearchParams(currentURL);
+  params.set(param, `${value}`);
+  return `?${params.toString()}`;
+}
+
+
+export function hasActiveFilters(filters: MapFilters): boolean {
+  return filters.countries.length > 0 || 
+         filters.bodiesOfWater.length > 0 || 
+         filters.startYear !== '' || 
+         filters.endYear !== '';
 }

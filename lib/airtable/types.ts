@@ -47,3 +47,15 @@ export interface MediaLocation {
   country?: string;
   media?: Media;
 }
+
+export interface MapFilters { 
+  countries: string[];
+  bodiesOfWater: string[];
+  startYear: string;
+  endYear: string;
+}
+
+export interface MultiSelectOption {
+  value: string;
+  label: string;
+}
