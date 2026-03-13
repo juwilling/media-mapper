@@ -272,6 +272,7 @@ export function Map({
   /** =============================================== */
   /** Randomly Select a Media Point */
   /** =============================================== */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (selectedMediaPoint || !isMapLoaded || data.length === 0) {
       return;
