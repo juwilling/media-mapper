@@ -272,7 +272,6 @@ export function Map({
   /** =============================================== */
   /** Randomly Select a Media Point */
   /** =============================================== */
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (selectedMediaPoint || !isMapLoaded || data.length === 0) {
       return;
@@ -281,7 +280,7 @@ export function Map({
     const randomIndex = Math.floor(Math.random() * data.length);
     window.history.pushState({}, "", `?mediaPointId=${data[randomIndex].id}`);
     // Omitting selectedMediaPoint since it would retrigger a selection when the media panel is closed.
-  }, [isMapLoaded, data]);
+  },[selectedMediaPoint, isMapLoaded, data]);
 
   return (
     <div className="w-full h-full relative">
