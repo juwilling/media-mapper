@@ -280,7 +280,7 @@ export function Map({
     const randomIndex = Math.floor(Math.random() * data.length);
     window.history.pushState({}, "", `?mediaPointId=${data[randomIndex].id}`);
     // Omitting selectedMediaPoint since it would retrigger a selection when the media panel is closed.
-  },[selectedMediaPoint, isMapLoaded, data]);
+  },[isMapLoaded, data]);
 
   return (
     <div className="w-full h-full relative">
